@@ -23,12 +23,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.2.3
         version: 1.2.3(@types/react@19.1.6)(react@19.1.0)
+      '@tanstack/react-query':
+        specifier: ^5.79.0
+        version: 5.79.0(react@19.1.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      cookies-next:
+        specifier: ^6.0.0
+        version: 6.0.0(next@15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       ky:
         specifier: ^1.8.1
         version: 1.8.1
@@ -54,6 +60,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.1.8
+      '@tanstack/react-query-devtools':
+        specifier: ^5.79.0
+        version: 5.79.0(@tanstack/react-query@5.79.0(react@19.1.0))(react@19.1.0)
       '@types/node':
         specifier: ^20
         version: 20.17.51
@@ -618,6 +627,23 @@ packages:
   '@tailwindcss/postcss@4.1.8':
     resolution: {integrity: sha512-vB/vlf7rIky+w94aWMw34bWW1ka6g6C3xIOdICKX2GC0VcLtL6fhlLiafF0DVIwa9V6EHz8kbWMkS2s2QvvNlw==}
 
+  '@tanstack/query-core@5.79.0':
+    resolution: {integrity: sha512-s+epTqqLM0/TbJzMAK7OEhZIzh63P9sWz5HEFc5XHL4FvKQXQkcjI8F3nee+H/xVVn7mrP610nVXwOytTSYd0w==}
+
+  '@tanstack/query-devtools@5.76.0':
+    resolution: {integrity: sha512-1p92nqOBPYVqVDU0Ua5nzHenC6EGZNrLnB2OZphYw8CNA1exuvI97FVgIKON7Uug3uQqvH/QY8suUKpQo8qHNQ==}
+
+  '@tanstack/react-query-devtools@5.79.0':
+    resolution: {integrity: sha512-YVRWxjxsWycWChjKxvaIAPdNC5LX0zpiHoNyTB8teDZpQstM1b7mCuAp3x60cjX1MhLoO3vbaeY29EKst4D4ug==}
+    peerDependencies:
+      '@tanstack/react-query': ^5.79.0
+      react: ^18 || ^19
+
+  '@tanstack/react-query@5.79.0':
+    resolution: {integrity: sha512-DjC4JIYZnYzxaTzbg3osOU63VNLP67dOrWet2cZvXgmgwAXNxfS52AMq86M5++ILuzW+BqTUEVMTjhrZ7/XBuA==}
+    peerDependencies:
+      react: ^18 || ^19
+
   '@tinyhttp/accepts@2.2.3':
     resolution: {integrity: sha512-9pQN6pJAJOU3McmdJWTcyq7LLFW8Lj5q+DadyKcvp+sxMkEpktKX5sbfJgJuOvjk6+1xWl7pe0YL1US1vaO/1w==}
     engines: {node: '>=12.20.0'}
@@ -1027,6 +1053,16 @@ packages:
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+
+  cookie@1.0.2:
+    resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
+    engines: {node: '>=18'}
+
+  cookies-next@6.0.0:
+    resolution: {integrity: sha512-Xq87TPIe7faqluf7gr3mobzO2JRe65oX+pnv4nrnDE/ak49Ic6QhNZSLCk+E5xOKtpVm1EoEazu0iBNyr5TXTA==}
+    peerDependencies:
+      next: '>=15.0.0'
+      react: '>= 16.8.0'
 
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
@@ -2624,6 +2660,21 @@ snapshots:
       postcss: 8.5.3
       tailwindcss: 4.1.8
 
+  '@tanstack/query-core@5.79.0': {}
+
+  '@tanstack/query-devtools@5.76.0': {}
+
+  '@tanstack/react-query-devtools@5.79.0(@tanstack/react-query@5.79.0(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      '@tanstack/query-devtools': 5.76.0
+      '@tanstack/react-query': 5.79.0(react@19.1.0)
+      react: 19.1.0
+
+  '@tanstack/react-query@5.79.0(react@19.1.0)':
+    dependencies:
+      '@tanstack/query-core': 5.79.0
+      react: 19.1.0
+
   '@tinyhttp/accepts@2.2.3':
     dependencies:
       mime: 4.0.4
@@ -3068,6 +3119,14 @@ snapshots:
   colorette@2.0.20: {}
 
   concat-map@0.0.1: {}
+
+  cookie@1.0.2: {}
+
+  cookies-next@6.0.0(next@15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0):
+    dependencies:
+      cookie: 1.0.2
+      next: 15.3.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react: 19.1.0
 
   cross-spawn@7.0.6:
     dependencies:

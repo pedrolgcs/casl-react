@@ -12,32 +12,12 @@ import {
 } from "@/components/ui/collapsible"
 import Link from "next/link"
 import { CommentList } from "./comment-list"
-
-interface Comment {
-  id: string
-  author: string
-  content: string
-}
-
-interface Author {
-  id: string
-  name: string
-}
-
-interface Post {
-  id: string
-  title: string
-  subtitle: string
-  content: string
-  author: Author
-  likes: number
-  comments: Comment[]
-}
+import type { Post } from "@/types/post"
 
 interface PostCardProps {
   post: Post
   isOwner: boolean
-  onLike: (postId: string) => void
+  onLike: (postId: number) => void
 }
 
 export default function PostCard({ post, isOwner, onLike }: PostCardProps) {
@@ -54,13 +34,12 @@ export default function PostCard({ post, isOwner, onLike }: PostCardProps) {
 
           <div className="flex items-center space-x-4">
             <Avatar className="h-8 w-8">
-              <AvatarImage src={`/placeholder.svg?height=32&width=32`} alt={post.author.name} />
-              <AvatarFallback>{post.author.name.substring(0, 2).toUpperCase()}</AvatarFallback>
+              <AvatarImage src={`/placeholder.svg?height=32&width=32`} alt={"Pedro Henrique"} />
+              <AvatarFallback>{"Pedro Henrique".substring(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
 
             <div className="flex flex-col gap-1 items-start">
-              <span className="text-sm font-medium">{post.author.name}</span>
-              <span className="text-xs font-medium text-gray-500">john@gmail.com</span>
+              <span className="text-sm font-medium">pedro@gmail.com</span>
             </div>
           </div>
         </div>
@@ -77,7 +56,7 @@ export default function PostCard({ post, isOwner, onLike }: PostCardProps) {
             <div className="flex items-center space-x-4">
               <Button variant="ghost" size="sm" className="flex items-center space-x-1" onClick={() => onLike(post.id)}>
                 <HeartIcon className="h-4 w-4" />
-                <span>{post.likes}</span>
+                <span>{post.likes.length}</span>
               </Button>
 
               <CollapsibleTrigger asChild>
@@ -113,7 +92,7 @@ export default function PostCard({ post, isOwner, onLike }: PostCardProps) {
           </div>
 
           <CollapsibleContent className="w-full pb-1 pr-1">
-            <CommentList comments={post.comments} />
+            <CommentList postId={post.id} />
           </CollapsibleContent>
         </CardFooter>
       </Collapsible>
