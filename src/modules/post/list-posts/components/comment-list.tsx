@@ -1,4 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Input } from "@/components/ui/input"
 
 interface Comment {
   id: string
@@ -12,7 +13,7 @@ interface CommentListProps {
 
 export function CommentList({ comments }: CommentListProps) {
   return (
-    <div className="w-full space-y-4 mt-2">
+    <div className="w-full space-y-4">
       <h3 className="font-medium">Comentários</h3>
 
       {comments.length === 0 ? (
@@ -25,7 +26,8 @@ export function CommentList({ comments }: CommentListProps) {
                 <AvatarImage src={`/placeholder.svg?height=24&width=24`} alt={comment.author} />
                 <AvatarFallback>{comment.author.substring(0, 2).toUpperCase()}</AvatarFallback>
               </Avatar>
-              <div className="bg-muted p-3 rounded-lg text-sm flex-1">
+
+              <div className="bg-slate-100 p-3 rounded-lg text-sm flex-1">
                 <div className="font-medium mb-1">{comment.author}</div>
                 <p>{comment.content}</p>
               </div>
@@ -39,11 +41,8 @@ export function CommentList({ comments }: CommentListProps) {
           <AvatarImage src="/placeholder.svg?height=24&width=24" alt="Seu avatar" />
           <AvatarFallback>EU</AvatarFallback>
         </Avatar>
-        <input
-          type="text"
-          placeholder="Adicione um comentário..."
-          className="flex-1 bg-muted px-3 py-2 text-sm rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-        />
+
+        <Input type="text" placeholder="Adicione um comentário..." />
       </div>
     </div>
   )

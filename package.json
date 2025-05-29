@@ -13,6 +13,7 @@
     "@casl/ability": "^6.7.3",
     "@casl/react": "^5.0.0",
     "@radix-ui/react-avatar": "^1.1.10",
+    "@radix-ui/react-collapsible": "^1.1.11",
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
