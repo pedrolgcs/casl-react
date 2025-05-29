@@ -52,7 +52,7 @@ const MOCK_POSTS = [
   },
 ]
 
-export default function PostList() {
+export function ListPosts() {
   const [posts, setPosts] = useState(MOCK_POSTS)
   
   const currentUserId = "user1"

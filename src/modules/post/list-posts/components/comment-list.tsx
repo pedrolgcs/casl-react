@@ -10,7 +10,7 @@ interface CommentListProps {
   comments: Comment[]
 }
 
-export default function CommentList({ comments }: CommentListProps) {
+export function CommentList({ comments }: CommentListProps) {
   return (
     <div className="w-full space-y-4 mt-2">
       <h3 className="font-medium">Comentários</h3>

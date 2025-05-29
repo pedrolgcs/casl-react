@@ -1,7 +1,7 @@
 import { PlusCircle } from "lucide-react"
 import Link from "next/link"
-import PostList from "@/components/post-list"
 import { Button } from "@/components/ui/button"
+import { ListPosts } from "@/modules/post/list-posts"
 
 export default function Home() {
   return (
@@ -15,8 +15,8 @@ export default function Home() {
           </Button>
         </Link>
       </div>
-      
-      <PostList />
+
+      <ListPosts />
     </div>
   )
 }
