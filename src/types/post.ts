@@ -1,25 +1,25 @@
 export type PostComment = {
-  id: number,
-  postId: number,
+  id: string,
+  postId: string,
   content: string
   user: {
-    id: number
+    id: string
     email: string
   }
 }
 
 type Like = {
-  id: number,
-  postId: number,
-  userId: number
+  id: string,
+  postId: string,
+  userId: string
 }
 
 export type Post = {
-  id: number,
+  id: string,
   title: string,
   subtitle: string,
   content: string,
-  userId: number
+  userId: string
   comments: Array<PostComment>
   likes: Array<Like>
 }
