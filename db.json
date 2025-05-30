@@ -25,21 +25,24 @@
       "title": "Planejar reunião semanal",
       "description": "Definir pauta e participantes da próxima reunião",
       "createdBy": "manager1",
-      "createdByName": "Mike Manager"
+      "createdByName": "Mike Manager",
+      "createdAt": "2023-08-01T10:00:00Z"
     },
     {
       "id": "2",
       "title": "Revisar proposta de orçamento",
       "description": "Verificar planilha enviada pelo financeiro",
       "createdBy": "admin1",
-      "createdByName": "Alice Admin"
+      "createdByName": "Alice Admin",
+      "createdAt": "2023-08-02T14:30:00Z"
     },
     {
       "id": "3",
       "title": "Organizar arquivos",
       "description": "Limpar arquivos antigos do Google Drive",
       "createdBy": "manager1",
-      "createdByName": "Mike Manager"
+      "createdByName": "Mike Manager",
+      "createdAt": "2023-08-03T09:15:00Z"
     }
   ]
 }
