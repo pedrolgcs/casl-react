@@ -2,72 +2,44 @@
   "users": [
     {
       "id": "1",
-      "email": "ana@example.com"
+      "name": "Alice Admin",
+      "role": "admin",
+      "avatar": "https://avatar.iran.liara.run/public?usearname=Alice"
     },
     {
       "id": "2",
-      "email": "joao@example.com"
+      "name": "Mike Manager",
+      "role": "manager",
+      "avatar": "https://avatar.iran.liara.run/public?usearname=Mike"
     },
     {
       "id": "3",
-      "email": "maria@example.com"
-    },
-    {
-      "id": "6e36",
-      "email": "pedro@gmail.com"
+      "name": "Vera Viewer",
+      "role": "viewer",
+      "avatar": "https://avatar.iran.liara.run/public?usearname=Vera"
     }
   ],
-  "posts": [
+  "tasks": [
     {
       "id": "1",
-      "title": "Primeiro Post",
-      "subtitle": "Introdução ao projeto",
-      "content": "Esse é o conteúdo do primeiro post.",
-      "userId": "1"
+      "title": "Planejar reunião semanal",
+      "description": "Definir pauta e participantes da próxima reunião",
+      "createdBy": "manager1",
+      "createdByName": "Mike Manager"
     },
     {
       "id": "2",
-      "title": "Segundo Post",
-      "subtitle": "Detalhes técnicos",
-      "content": "Aqui explicamos os detalhes técnicos da POC.",
-      "userId": "2"
-    }
-  ],
-  "likes": [
-    {
-      "id": "1",
-      "postId": "1",
-      "userId": "2"
-    },
-    {
-      "id": "2",
-      "postId": "1",
-      "userId": "3"
+      "title": "Revisar proposta de orçamento",
+      "description": "Verificar planilha enviada pelo financeiro",
+      "createdBy": "admin1",
+      "createdByName": "Alice Admin"
     },
     {
       "id": "3",
-      "postId": "2",
-      "userId": "1"
-    }
-  ],
-  "comments": [
-    {
-      "id": "1",
-      "postId": "1",
-      "userId": "2",
-      "content": "Muito bom, parabéns!"
-    },
-    {
-      "id": "2",
-      "postId": "1",
-      "userId": "3",
-      "content": "Gostei da explicação."
-    },
-    {
-      "id": "3",
-      "postId": "2",
-      "userId": "1",
-      "content": "Ficou claro agora, obrigado!"
+      "title": "Organizar arquivos",
+      "description": "Limpar arquivos antigos do Google Drive",
+      "createdBy": "manager1",
+      "createdByName": "Mike Manager"
     }
   ]
 }

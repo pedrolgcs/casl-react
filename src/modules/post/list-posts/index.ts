@@ -1,1 +1,0 @@
-export { ListPosts } from './components/list-posts'
