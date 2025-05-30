@@ -3,7 +3,7 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 type Profile = {
   id: string
   name: string
-  role: 'admin' | 'manager' | 'viewer'
+  role: 'ADMIN' | 'MANAGER' | 'VIEWER'
   avatar: string
 }
 
@@ -22,7 +22,7 @@ const defaultState: State = {
   profile: {
     id: '',
     name: '',
-    role: 'viewer',
+    role: 'VIEWER',
     avatar: '',
   },
   _hasHydratedAuth: false,

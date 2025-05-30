@@ -3,7 +3,7 @@ import { api } from '../api'
 export type GetUsersResponse = Array<{
   id: string
   name: string
-  role: 'admin' | 'manager' | 'viewer'
+  role: 'ADMIN' | 'MANAGER' | 'VIEWER'
   avatar: string
 }>
 
