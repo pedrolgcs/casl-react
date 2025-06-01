@@ -3,6 +3,7 @@
 import { setCookie } from 'cookies-next/client'
 import { CheckSquare } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -17,6 +18,8 @@ import { cn } from '@/lib/utils'
 import { useAppStore } from '@/store'
 
 export default function Header() {
+  const router = useRouter()
+
   const profile = useAppStore((state) => state.profile)
 
   const setProfile = useAppStore((state) => state.setProfile)
@@ -29,6 +32,7 @@ export default function Header() {
     if (user) {
       setCookie('taskboard', user.id)
       setProfile(user)
+      router.refresh()
     }
   }
 

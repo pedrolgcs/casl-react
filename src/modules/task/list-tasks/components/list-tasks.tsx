@@ -25,7 +25,7 @@ export function ListTasks() {
           <TableHead className="max-w-[400px]">Description</TableHead>
           <TableHead>Create by</TableHead>
           <TableHead>Create at</TableHead>
-          <TableHead className="w-20 text-right">Actions</TableHead>
+          <TableHead className="w-36 text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
 

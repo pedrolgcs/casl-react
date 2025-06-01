@@ -1,23 +1,7 @@
 import dayjs from 'dayjs'
-import {
-  CopyIcon,
-  EllipsisVerticalIcon,
-  EyeIcon,
-  LockKeyholeIcon,
-} from 'lucide-react'
-import { useMemo } from 'react'
+import { EyeIcon, NotebookPenIcon, Trash2Icon } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 import { TableCell, TableRow } from '@/components/ui/table'
 import { taskSchema } from '@/lib/casl'
 import { useAbility } from '@/modules/authentication'
@@ -36,13 +20,15 @@ type TaskRowProps = {
 export function TaskRow({ task }: TaskRowProps) {
   const { ability } = useAbility()
 
-  const canDeleteTask = useMemo(() => {
-    return ability?.can('delete', taskSchema.parse({ ownerId: task.createdBy }))
-  }, [ability, task.createdBy])
+  const canDeleteTask = ability.can(
+    'delete',
+    taskSchema.parse({ ownerId: task.createdBy }),
+  )
 
-  const canUpdateTask = useMemo(() => {
-    return ability?.can('update', taskSchema.parse({ ownerId: task.createdBy }))
-  }, [ability, task.createdBy])
+  const canEditTask = ability?.can(
+    'update',
+    taskSchema.parse({ ownerId: task.createdBy }),
+  )
 
   return (
     <TableRow key={task.id}>
@@ -54,43 +40,34 @@ export function TaskRow({ task }: TaskRowProps) {
       </TableCell>
       <TableCell>{task.createdByName}</TableCell>
       <TableCell>{dayjs(task.createdAt).format('DD/MM/YYYY')}</TableCell>
-      <TableCell className="w-20 text-right">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon">
-              <EllipsisVerticalIcon />
-            </Button>
-          </DropdownMenuTrigger>
+      <TableCell className="flex w-36 items-center justify-end gap-2">
+        <Button
+          variant="ghost"
+          size="icon"
+          className="text-emerald-700 hover:text-emerald-600"
+        >
+          <EyeIcon />
+        </Button>
 
-          <DropdownMenuContent className="w-56">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuSeparator />
+        {canEditTask && (
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-sky-700 hover:text-sky-600"
+          >
+            <NotebookPenIcon />
+          </Button>
+        )}
 
-            <DropdownMenuGroup>
-              {canUpdateTask && (
-                <DropdownMenuItem>
-                  <CopyIcon />
-                  Update
-                  <DropdownMenuShortcut>⇧⌘U</DropdownMenuShortcut>
-                </DropdownMenuItem>
-              )}
-
-              {canDeleteTask && (
-                <DropdownMenuItem>
-                  <LockKeyholeIcon />
-                  Revoke Access
-                  <DropdownMenuShortcut>⇧⌘D</DropdownMenuShortcut>
-                </DropdownMenuItem>
-              )}
-
-              <DropdownMenuItem>
-                <EyeIcon />
-                Read
-                <DropdownMenuShortcut>⌘W</DropdownMenuShortcut>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        {canDeleteTask && (
+          <Button
+            variant="ghost"
+            size="icon"
+            className="text-rose-700 hover:text-rose-600"
+          >
+            <Trash2Icon />
+          </Button>
+        )}
       </TableCell>
     </TableRow>
   )
