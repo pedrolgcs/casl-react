@@ -1,6 +1,1 @@
-export * from './city-hall'
-export * from './user'
-export * from './moderator'
-export * from './department'
-export * from './ticket'
-export * from './ticket-history'
+export * from './task'

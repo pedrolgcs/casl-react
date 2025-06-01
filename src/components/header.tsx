@@ -1,5 +1,6 @@
 'use client'
 
+import { setCookie } from 'cookies-next/client'
 import { CheckSquare } from 'lucide-react'
 import Link from 'next/link'
 
@@ -26,6 +27,7 @@ export default function Header() {
     const user = users?.find((u) => u.id === id)
 
     if (user) {
+      setCookie('taskboard', user.id)
       setProfile(user)
     }
   }
@@ -79,7 +81,7 @@ export default function Header() {
                       <Avatar className="h-8 w-8">
                         <AvatarImage src={user.avatar || '/placeholder.svg'} />
                         <AvatarFallback className="text-xs">
-                          {user.name.slice(0, 2)} - {user.role}
+                          {user.name.slice(0, 2)}
                         </AvatarFallback>
                       </Avatar>
 

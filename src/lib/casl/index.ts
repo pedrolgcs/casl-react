@@ -6,16 +6,9 @@ import {
 } from '@casl/ability'
 import { z } from 'zod'
 
-import { Moderator } from './models'
+import { type User } from './models'
 import { permissions } from './permissions'
-import {
-  cityHallSubject,
-  departmentSubject,
-  moderatorSubject,
-  ticketHistorySubject,
-  ticketSubject,
-  userSubject,
-} from './subjects'
+import { taskSubject } from './subjects'
 
 export * from './models'
 export * from './subjects'
@@ -23,12 +16,7 @@ export * from './role'
 
 // group all subjects
 const appAbilitiesSchema = z.union([
-  userSubject,
-  cityHallSubject,
-  departmentSubject,
-  moderatorSubject,
-  ticketSubject,
-  ticketHistorySubject,
+  taskSubject,
   z.tuple([z.literal('manage'), z.literal('all')]),
 ])
 
@@ -38,17 +26,17 @@ export type AppAbility = MongoAbility<AppAbilities>
 
 const createAppAbility: CreateAbility<AppAbility> = createMongoAbility
 
-export function defineAbilityFor(moderator: Moderator) {
+export function defineAbilityFor(user: User) {
   const builder = new AbilityBuilder(createAppAbility)
 
-  const permissionsForRole = permissions[moderator.role]
+  const permissionsForRole = permissions[user.role]
 
   if (typeof permissionsForRole !== 'function') {
-    throw new Error(`Permissions for role ${moderator.role} is not defined.`)
+    throw new Error(`Permissions for role ${user.role} is not defined.`)
   }
 
-  // apply rules for moderator
-  permissionsForRole(moderator, builder)
+  // apply rules for user
+  permissionsForRole(user, builder)
 
   const ability = builder.build({
     detectSubjectType(subject) {

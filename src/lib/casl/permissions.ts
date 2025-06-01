@@ -1,11 +1,11 @@
 import { type AbilityBuilder } from '@casl/ability'
 
 import { AppAbility } from './index'
-import { Moderator } from './models'
+import { User } from './models'
 import { Role } from './role'
 
 type PermissionsByRole = (
-  user: Moderator,
+  user: User,
   builder: AbilityBuilder<AppAbility>,
 ) => void
 
@@ -15,28 +15,14 @@ export const permissions: Record<Role, PermissionsByRole> = {
   },
 
   MANAGER: (user, { can }) => {
-    can(['get'], 'User')
+    can(['get', 'create'], 'Task')
 
-    can(['get', 'update', 'delete'], 'Moderator')
-
-    can(['get'], 'Ticket', {
-      departmentId: { $in: user.memberOn },
-    })
-
-    can(['get', 'accept', 'reject'], 'TicketHistory', {
-      departmentId: { $in: user.memberOn },
+    can(['update', 'delete'], 'Task', {
+      ownerId: { $eq: user.id },
     })
   },
 
-  ADMINISTRATION: (user, { can }) => {
-    can(['get'], 'User')
-
-    can(['get'], 'Ticket', {
-      departmentId: { $in: user.memberOn },
-    })
-
-    can(['get', 'accept', 'reject'], 'TicketHistory', {
-      departmentId: { $in: user.memberOn },
-    })
+  VIEWER: (_, { can }) => {
+    can(['get'], 'Task')
   },
 }
