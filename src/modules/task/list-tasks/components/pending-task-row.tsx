@@ -2,7 +2,6 @@ import dayjs from 'dayjs'
 import {
   ArrowDownRightIcon,
   ArrowUpRightIcon,
-  CircleCheckIcon,
   NotebookPenIcon,
   StarIcon,
 } from 'lucide-react'
@@ -14,6 +13,7 @@ import { TableCell, TableRow } from '@/components/ui/table'
 import { useAbility } from '@/context/ability-provider'
 import { useToggleTaskHighlight } from '@/http/hooks/use-toggle-task-highlight'
 import { taskSchema } from '@/lib/casl'
+import { CompleteTask } from '@/modules/task/complete-task'
 import { DeleteTask } from '@/modules/task/delete-task'
 import type { Task } from '@/types/task'
 
@@ -54,13 +54,7 @@ export function PendingTaskRow({ task }: PendingTaskRowProps) {
       <TableCell>{dayjs(task.createdAt).format('DD/MM/YYYY')}</TableCell>
       <TableCell className="flex items-center justify-end gap-2">
         <Can I="complete" a="Task">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-emerald-700 hover:text-emerald-600"
-          >
-            <CircleCheckIcon />
-          </Button>
+          <CompleteTask id={task.id} />
         </Can>
 
         {/* <Can I="create" a="Task" passThrough>

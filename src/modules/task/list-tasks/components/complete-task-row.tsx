@@ -1,8 +1,9 @@
 import dayjs from 'dayjs'
-import { CheckIcon, Undo2Icon } from 'lucide-react'
+import { CheckIcon } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
+import { Can } from '@/components/can'
 import { TableCell, TableRow } from '@/components/ui/table'
+import { ReopenTask } from '@/modules/task/reopen-task'
 import type { Task } from '@/types/task'
 
 type CompleteTaskRowProps = {
@@ -28,15 +29,11 @@ export function CompleteTaskRow({ task }: CompleteTaskRowProps) {
 
       <TableCell>{dayjs(task.createdAt).format('DD/MM/YYYY')}</TableCell>
 
-      <TableCell className="flex items-center justify-end gap-2">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="text-emerald-500 hover:text-emerald-400"
-        >
-          <Undo2Icon />
-        </Button>
-      </TableCell>
+      <Can I="reopen" a="Task">
+        <TableCell className="flex items-center justify-end gap-2">
+          <ReopenTask id={task.id} />
+        </TableCell>
+      </Can>
     </TableRow>
   )
 }

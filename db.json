@@ -38,7 +38,7 @@
       "createdByName": "Mike Manager",
       "createdAt": "2023-08-03T09:15:00Z",
       "highlighted": true,
-      "completed": false
+      "completed": true
     },
     {
       "id": "cbc7",
@@ -68,7 +68,7 @@
       "createdByName": "Mike Manager",
       "createdAt": "2025-05-30T18:55:42.082Z",
       "highlighted": false,
-      "completed": true
+      "completed": false
     },
     {
       "id": "34cd",
@@ -78,7 +78,7 @@
       "createdByName": "Mike Manager",
       "createdAt": "2025-05-30T18:56:12.346Z",
       "highlighted": false,
-      "completed": true
+      "completed": false
     }
   ]
 }

@@ -12,12 +12,11 @@ type PermissionsByRole = (
 export const permissions: Record<Role, PermissionsByRole> = {
   ADMIN: (_, { can, cannot }) => {
     can('manage', 'all')
-
     cannot('complete', 'Task')
   },
 
   MANAGER: (user, { can }) => {
-    can(['get', 'create', 'complete'], 'Task')
+    can(['get', 'create', 'complete', 'reopen'], 'Task')
 
     can(['update', 'delete'], 'Task', {
       ownerId: { $eq: user.id },
