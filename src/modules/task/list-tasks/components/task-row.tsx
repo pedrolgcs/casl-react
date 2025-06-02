@@ -5,7 +5,6 @@ import {
   CircleCheckIcon,
   NotebookPenIcon,
   StarIcon,
-  Trash2Icon,
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -14,6 +13,7 @@ import { TableCell, TableRow } from '@/components/ui/table'
 import { useToggleTaskHighlight } from '@/http/hooks/use-toggle-task-highlight'
 import { taskSchema } from '@/lib/casl'
 import { useAbility } from '@/modules/authentication'
+import { DeleteTask } from '@/modules/task/delete-task'
 
 type TaskRowProps = {
   task: {
@@ -109,15 +109,7 @@ export function TaskRow({ task }: TaskRowProps) {
           </Button>
         )}
 
-        {canDeleteTask && (
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-rose-700 hover:text-rose-600"
-          >
-            <Trash2Icon />
-          </Button>
-        )}
+        {canDeleteTask && <DeleteTask id={task.id} />}
       </TableCell>
     </TableRow>
   )

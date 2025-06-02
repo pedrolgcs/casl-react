@@ -54,7 +54,7 @@
       "createdBy": "2",
       "createdByName": "Mike Manager",
       "createdAt": "2025-05-30T18:54:56.579Z",
-      "highlighted": false
+      "highlighted": true
     },
     {
       "id": "3cc2",
@@ -72,15 +72,6 @@
       "createdBy": "2",
       "createdByName": "Mike Manager",
       "createdAt": "2025-05-30T18:56:12.346Z",
-      "highlighted": false
-    },
-    {
-      "id": "db5f",
-      "title": "teste domingo",
-      "description": "description teste domingo",
-      "createdBy": "1",
-      "createdByName": "Alice",
-      "createdAt": "2025-06-01T17:05:10.289Z",
       "highlighted": false
     }
   ]
