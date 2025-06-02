@@ -5,5 +5,6 @@ export type Task = {
   createdBy: string
   createdByName: string
   highlighted: boolean
+  completed: boolean
   createdAt: string
 }

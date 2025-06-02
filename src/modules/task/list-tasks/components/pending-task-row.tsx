@@ -14,20 +14,13 @@ import { useToggleTaskHighlight } from '@/http/hooks/use-toggle-task-highlight'
 import { taskSchema } from '@/lib/casl'
 import { useAbility } from '@/modules/authentication'
 import { DeleteTask } from '@/modules/task/delete-task'
+import type { Task } from '@/types/task'
 
-type TaskRowProps = {
-  task: {
-    id: string
-    title: string
-    description: string
-    createdBy: string
-    createdByName: string
-    highlighted: boolean
-    createdAt: string
-  }
+type PendingTaskRowProps = {
+  task: Task
 }
 
-export function TaskRow({ task }: TaskRowProps) {
+export function PendingTaskRow({ task }: PendingTaskRowProps) {
   const { ability } = useAbility()
 
   const { mutate: toggleTaskHighlight } = useToggleTaskHighlight()

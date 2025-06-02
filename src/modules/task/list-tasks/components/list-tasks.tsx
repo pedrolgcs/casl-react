@@ -10,10 +10,15 @@ import {
 } from '@/components/ui/table'
 import { useGetTasks } from '@/http/hooks/use-get-tasks'
 
-import { TaskRow } from './task-row'
+import { CompleteTaskRow } from './complete-task-row'
+import { PendingTaskRow } from './pending-task-row'
 
 export function ListTasks() {
   const { data: tasks } = useGetTasks()
+
+  const completeTasks = tasks?.filter((task) => task.completed)
+
+  const pendingTasks = tasks?.filter((task) => !task.completed)
 
   return (
     <Table>
@@ -31,7 +36,13 @@ export function ListTasks() {
       </TableHeader>
 
       <TableBody>
-        {tasks?.map((task) => <TaskRow key={task.id} task={task} />)}
+        {pendingTasks?.map((task) => (
+          <PendingTaskRow key={task.id} task={task} />
+        ))}
+
+        {completeTasks?.map((task) => (
+          <CompleteTaskRow key={task.id} task={task} />
+        ))}
       </TableBody>
     </Table>
   )
