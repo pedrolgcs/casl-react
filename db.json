@@ -26,15 +26,8 @@
       "description": "Definir pauta e participantes da próxima reunião",
       "createdBy": "1",
       "createdByName": "Mike Manager",
-      "createdAt": "2023-08-01T10:00:00Z"
-    },
-    {
-      "id": "2",
-      "title": "Revisar proposta de orçamento",
-      "description": "Verificar planilha enviada pelo financeiro",
-      "createdBy": "1",
-      "createdByName": "Alice Admin",
-      "createdAt": "2023-08-02T14:30:00Z"
+      "createdAt": "2023-08-01T10:00:00Z",
+      "highlighted": true
     },
     {
       "id": "3",
@@ -42,7 +35,8 @@
       "description": "Limpar arquivos antigos do Google Drive",
       "createdBy": "2",
       "createdByName": "Mike Manager",
-      "createdAt": "2023-08-03T09:15:00Z"
+      "createdAt": "2023-08-03T09:15:00Z",
+      "highlighted": true
     },
     {
       "id": "cbc7",
@@ -50,7 +44,8 @@
       "description": "teste",
       "createdBy": "2",
       "createdByName": "Mike Manager",
-      "createdAt": "2025-05-30T18:54:03.799Z"
+      "createdAt": "2025-05-30T18:54:03.799Z",
+      "highlighted": true
     },
     {
       "id": "eabd",
@@ -58,7 +53,8 @@
       "description": "teste 3",
       "createdBy": "2",
       "createdByName": "Mike Manager",
-      "createdAt": "2025-05-30T18:54:56.579Z"
+      "createdAt": "2025-05-30T18:54:56.579Z",
+      "highlighted": false
     },
     {
       "id": "3cc2",
@@ -66,7 +62,8 @@
       "description": "teste 4",
       "createdBy": "2",
       "createdByName": "Mike Manager",
-      "createdAt": "2025-05-30T18:55:42.082Z"
+      "createdAt": "2025-05-30T18:55:42.082Z",
+      "highlighted": false
     },
     {
       "id": "34cd",
@@ -74,7 +71,17 @@
       "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
       "createdBy": "2",
       "createdByName": "Mike Manager",
-      "createdAt": "2025-05-30T18:56:12.346Z"
+      "createdAt": "2025-05-30T18:56:12.346Z",
+      "highlighted": false
+    },
+    {
+      "id": "db5f",
+      "title": "teste domingo",
+      "description": "description teste domingo",
+      "createdBy": "1",
+      "createdByName": "Alice",
+      "createdAt": "2025-06-01T17:05:10.289Z",
+      "highlighted": false
     }
   ]
 }

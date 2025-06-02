@@ -1,5 +1,3 @@
-'use client'
-
 import { zodResolver } from '@hookform/resolvers/zod'
 import { NotebookPenIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
@@ -11,10 +9,10 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useCreateTask } from '@/http/hooks/use-create-task'
-import { useAppStore } from '@/store'
+import { useEditTask } from '@/http/hooks/use-edit-task'
+import type { Task } from '@/types/task'
 
-const createTaskSchema = z.object({
+const editTaskSchema = z.object({
   title: z.string().min(3, { message: 'Title must be at least 3 characters' }),
   description: z.string().min(3, {
     message: 'Description must be at least 3 characters',
@@ -22,44 +20,44 @@ const createTaskSchema = z.object({
   highlighted: z.boolean(),
 })
 
-type CreateTaskFormData = z.infer<typeof createTaskSchema>
+type EditTaskFormData = z.infer<typeof editTaskSchema>
 
-export function CreateTask() {
+type EditTaskFormProps = {
+  task: Task
+}
+
+export function EditTaskForm({ task }: EditTaskFormProps) {
   const router = useRouter()
 
-  const user = useAppStore((state) => state.profile)
-
-  const { mutate: createTask } = useCreateTask()
+  const { mutate: editTask } = useEditTask()
 
   const { register, handleSubmit, control, formState } =
-    useForm<CreateTaskFormData>({
-      resolver: zodResolver(createTaskSchema),
+    useForm<EditTaskFormData>({
+      resolver: zodResolver(editTaskSchema),
       defaultValues: {
-        highlighted: false,
+        title: task.title,
+        description: task.description,
+        highlighted: task.highlighted,
       },
     })
 
-  const handleCreateTask = async (data: CreateTaskFormData) => {
+  const handleEditTask = async (data: EditTaskFormData) => {
     const { title, description, highlighted } = data
 
-    console.log({ title, description, highlighted })
-
-    createTask(
+    editTask(
       {
+        id: task.id,
         title,
         description,
-        createdBy: user.id,
-        createdByName: user.name,
         highlighted,
-        createdAt: new Date().toISOString(),
       },
       {
         onSuccess: () => {
-          toast.success('Task created successfully')
+          toast.success('Task updated successfully')
           router.push('/')
         },
         onError: () => {
-          toast.error('Error creating task')
+          toast.error('Error updating task')
         },
       },
     )
@@ -67,7 +65,7 @@ export function CreateTask() {
 
   return (
     <form
-      onSubmit={handleSubmit(handleCreateTask)}
+      onSubmit={handleSubmit(handleEditTask)}
       className="flex w-full flex-col gap-6"
     >
       <div className="space-y-2">
@@ -110,7 +108,7 @@ export function CreateTask() {
 
       <Button type="submit">
         <NotebookPenIcon />
-        Create Task
+        Edit task
       </Button>
     </form>
   )

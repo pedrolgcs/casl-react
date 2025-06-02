@@ -9,6 +9,8 @@ export const taskSubject = z.tuple([
     z.literal('create'),
     z.literal('update'),
     z.literal('delete'),
+    z.literal('highlight'),
+    z.literal('complete'),
   ]),
   z.union([z.literal('Task'), taskSchema]),
 ])

@@ -1,19 +1,14 @@
 import { createJSONStorage, persist } from 'zustand/middleware'
 
-type Profile = {
-  id: string
-  name: string
-  role: 'ADMIN' | 'MANAGER' | 'VIEWER'
-  avatar: string
-}
+import type { User } from '@/types/user'
 
 type State = {
-  profile: Profile
+  profile: User
   _hasHydratedAuth: boolean
 }
 
 type Actions = {
-  setProfile: (payload: Profile) => void
+  setProfile: (payload: User) => void
 }
 
 export type AuthSlice = State & Actions

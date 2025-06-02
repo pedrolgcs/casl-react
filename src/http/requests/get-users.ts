@@ -1,11 +1,8 @@
+import type { User } from '@/types/user'
+
 import { api } from '../api'
 
-export type GetUsersResponse = Array<{
-  id: string
-  name: string
-  role: 'ADMIN' | 'MANAGER' | 'VIEWER'
-  avatar: string
-}>
+export type GetUsersResponse = Array<User>
 
 export async function getUsers() {
   const result = await api.get('users').json<GetUsersResponse>()

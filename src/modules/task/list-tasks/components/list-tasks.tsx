@@ -21,11 +21,12 @@ export function ListTasks() {
 
       <TableHeader>
         <TableRow>
+          <TableHead className="max-w-[50px]">Priority</TableHead>
           <TableHead className="max-w-[150px]">Title</TableHead>
           <TableHead className="max-w-[400px]">Description</TableHead>
           <TableHead>Create by</TableHead>
           <TableHead>Create at</TableHead>
-          <TableHead className="w-36 text-right">Actions</TableHead>
+          <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
 
