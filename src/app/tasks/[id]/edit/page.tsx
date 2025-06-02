@@ -2,8 +2,8 @@ import { ArrowLeftIcon } from 'lucide-react'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
-import { ability } from '@/modules/authentication'
 import { EditTask } from '@/modules/task/edit-task'
+import { ability } from '@/utils/ssr-ability'
 
 type EditTaskPageProps = {
   params: Promise<{ id: string }>

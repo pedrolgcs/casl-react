@@ -6,7 +6,7 @@ type AuthProviderProps = {
   children: ReactNode
 }
 
-export function AuthProvider({ children }: AuthProviderProps) {
+export function AppStoreProvider({ children }: AuthProviderProps) {
   const hasHydrated = useAppStore((state) => state._hasHydratedAuth)
 
   if (!hasHydrated) {

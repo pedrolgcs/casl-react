@@ -2,8 +2,8 @@ import { PlusIcon } from 'lucide-react'
 import Link from 'next/link'
 
 import { Button } from '@/components/ui/button'
-import { ability } from '@/modules/authentication'
 import { ListTasks } from '@/modules/task/list-tasks'
+import { ability } from '@/utils/ssr-ability'
 
 export default async function Home() {
   const permissions = await ability()

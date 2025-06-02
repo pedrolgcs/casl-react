@@ -8,11 +8,12 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 
+import { Can } from '@/components/can'
 import { Button } from '@/components/ui/button'
 import { TableCell, TableRow } from '@/components/ui/table'
+import { useAbility } from '@/context/ability-provider'
 import { useToggleTaskHighlight } from '@/http/hooks/use-toggle-task-highlight'
 import { taskSchema } from '@/lib/casl'
-import { useAbility } from '@/modules/authentication'
 import { DeleteTask } from '@/modules/task/delete-task'
 import type { Task } from '@/types/task'
 
@@ -25,25 +26,9 @@ export function PendingTaskRow({ task }: PendingTaskRowProps) {
 
   const { mutate: toggleTaskHighlight } = useToggleTaskHighlight()
 
-  const canCompleteTask = ability.can(
-    'complete',
-    taskSchema.parse({ ownerId: task.createdBy }),
-  )
+  const parsedTask = taskSchema.parse({ ownerId: task.createdBy })
 
-  const canHighlightTask = ability.can(
-    'highlight',
-    taskSchema.parse({ ownerId: task.createdBy }),
-  )
-
-  const canDeleteTask = ability.can(
-    'delete',
-    taskSchema.parse({ ownerId: task.createdBy }),
-  )
-
-  const canEditTask = ability?.can(
-    'update',
-    taskSchema.parse({ ownerId: task.createdBy }),
-  )
+  const canDeleteTask = ability.can('delete', parsedTask)
 
   const handleToggleTaskHighlight = () => {
     toggleTaskHighlight({ id: task.id, highlighted: !task.highlighted })
@@ -68,7 +53,7 @@ export function PendingTaskRow({ task }: PendingTaskRowProps) {
       <TableCell>{task.createdByName}</TableCell>
       <TableCell>{dayjs(task.createdAt).format('DD/MM/YYYY')}</TableCell>
       <TableCell className="flex items-center justify-end gap-2">
-        {canCompleteTask && (
+        <Can I="complete" a="Task">
           <Button
             variant="ghost"
             size="icon"
@@ -76,9 +61,17 @@ export function PendingTaskRow({ task }: PendingTaskRowProps) {
           >
             <CircleCheckIcon />
           </Button>
-        )}
+        </Can>
 
-        {canHighlightTask && (
+        {/* <Can I="create" a="Task" passThrough>
+          {(allowed) => (
+            <Button size="sm" disabled={!allowed}>
+              example
+            </Button>
+          )}
+        </Can> */}
+
+        <Can I="highlight" a="Task">
           <Button
             variant="ghost"
             size="icon"
@@ -87,9 +80,9 @@ export function PendingTaskRow({ task }: PendingTaskRowProps) {
           >
             <StarIcon fill={task.highlighted ? 'currentColor' : 'none'} />
           </Button>
-        )}
+        </Can>
 
-        {canEditTask && (
+        <Can I="update" this={parsedTask}>
           <Button
             variant="ghost"
             size="icon"
@@ -100,7 +93,7 @@ export function PendingTaskRow({ task }: PendingTaskRowProps) {
               <NotebookPenIcon />
             </Link>
           </Button>
-        )}
+        </Can>
 
         {canDeleteTask && <DeleteTask id={task.id} />}
       </TableCell>
