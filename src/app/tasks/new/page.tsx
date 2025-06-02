@@ -4,6 +4,7 @@ import { ability } from '@/utils/ssr-ability'
 export default async function NewTask() {
   const permissions = await ability()
 
+  // SSR
   if (permissions?.cannot('create', 'Task')) {
     return <div>unauthorized</div>
   }

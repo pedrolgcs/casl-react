@@ -8,6 +8,7 @@ import { ability } from '@/utils/ssr-ability'
 export default async function Home() {
   const permissions = await ability()
 
+  // SSR
   const canCreateTask = permissions?.can('create', 'Task')
 
   return (

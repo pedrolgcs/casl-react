@@ -14,6 +14,7 @@ export default async function EditTaskPage({ params }: EditTaskPageProps) {
 
   const permissions = await ability()
 
+  // SSR
   if (!permissions?.can('update', 'Task')) {
     return <div>unauthorized</div>
   }
