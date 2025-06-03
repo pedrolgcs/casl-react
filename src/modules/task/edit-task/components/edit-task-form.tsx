@@ -5,6 +5,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 import { z } from 'zod'
 
+import { InputError } from '@/components/input-error'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
@@ -72,7 +73,7 @@ export function EditTaskForm({ task }: EditTaskFormProps) {
         <Label htmlFor="title">Title</Label>
         <Input id="title" {...register('title')} />
         {formState.errors.title && (
-          <p className="text-red-500">{formState.errors.title.message}</p>
+          <InputError>{formState.errors.title.message}</InputError>
         )}
       </div>
 
@@ -80,7 +81,7 @@ export function EditTaskForm({ task }: EditTaskFormProps) {
         <Label htmlFor="description">Description</Label>
         <Input id="description" {...register('description')} />
         {formState.errors.description && (
-          <p className="text-red-500">{formState.errors.description.message}</p>
+          <InputError>{formState.errors.description.message}</InputError>
         )}
       </div>
 
@@ -98,9 +99,7 @@ export function EditTaskForm({ task }: EditTaskFormProps) {
               <Label htmlFor="highlighted">Highlighted</Label>
             </div>
             {formState.errors.highlighted && (
-              <p className="text-red-500">
-                {formState.errors.highlighted.message}
-              </p>
+              <InputError>{formState.errors.highlighted.message}</InputError>
             )}
           </div>
         )}
