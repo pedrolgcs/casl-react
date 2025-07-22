@@ -24,8 +24,6 @@ export const permissions: Record<Role, PermissionsByRole> = {
   },
 
   VIEWER: (_, { can }) => {
-    can(['get'], 'Task')
-
-    can(['complete'], 'Task')
+    can(['get', 'complete'], 'Task')
   },
 }
